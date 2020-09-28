@@ -6,6 +6,17 @@
   --textcolour: #FFF;
 }
 
+*:focus{
+  outline: none;
+}
+
+body, html{
+  background-color: var(--backcolour);
+  background-repeat: no-repeat;
+  height: 100%;
+  overflow: hidden;
+}
+
 .container{
   padding-top: 30vh;
   margin: auto;
@@ -41,16 +52,31 @@
   cursor: help;
 }
 
+#skull1{
+  display: inline;
+}
+#skull2{
+  display: none;
+}
+
 #title{
   font-size: 2em;
   color: var(--textcolour);
 }
 
-#searchbar, #searchbutton{
+.search{
   padding: 8px;
   border-radius: 15px;
   border: none;
-  box-shadow: 10px 10px rgb(60, 60, 60);
+  
+  -webkit-appearance: none;
+  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -webkit-box-shadow: 10px 10px 0px rgb(60, 60, 60);  
+  /* Firefox 3.5 - 3.6 */
+  -moz-box-shadow: 10px 10px 0px rgb(60, 60, 60);  
+  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  box-shadow: 10px 10px 0px rgb(60, 60, 60);  
+
   vertical-align: top;
 }
 
@@ -59,7 +85,8 @@
 }
 
 #searchbutton{
-  width: 100px;
+  width: 75px;
+  flex-shrink: 0;
   margin-left: 1em;
   background-color: white;
   height: 35px;
@@ -69,13 +96,41 @@
 
 #searchbutton:active{
   transform: translate(6px, 6px);
-  box-shadow: 4px 4px rgb(60, 60, 60);
   color: black;
+  
+  -webkit-box-shadow: 4px 4px rgb(60, 60, 60);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    4px 4px rgb(60, 60, 60);  /* Firefox 3.5 - 3.6 */
+  box-shadow:         4px 4px rgb(60, 60, 60);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
-body, html{
-  background-color: var(--backcolour);
-  background-repeat: no-repeat;
-  height: 100%;
-  
+@media only screen and (max-width: 768px) {
+  .container{
+    min-width: 0px;
+    padding-top: 30vh;
+    padding-left: 1em;
+    width: 100%;
+  }
+  .contentcontainer{
+    width: inherit;
+  }
+  .inputcontainer{
+    margin-top: 0.5em;
+    flex-direction: column;
+  }
+  .timecontainer{
+    font-size: 0.75em;
+  }
+  #skull1{
+    display: none;
+  }
+  #skull2{
+    display: inline;
+  }
+  #searchbutton{
+    margin: 0.5em 0em 0em 0em;
+  }
+  #searchbar{
+    height: 19px;
+    width: 80%;
+  }
 }
